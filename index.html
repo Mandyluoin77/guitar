@@ -11,37 +11,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Secular+One&display=swap" rel="stylesheet">
 <style>
 :root{
-  --wood:#2B1B14;      /* rosewood */
-  --wood-2:#36231A;
-  --spruce:#E9C98F;    /* spruce top */
+  --wood:#0A1120;      /* blue-black background */
+  --wood-2:#131E33;    /* cards and fields */
+  --spruce:#E9C98F;    /* spruce gold accent */
   --bronze:#B98A4E;    /* phosphor-bronze strings */
-  --ink:#F3E6CF;
-  --muted:#BFA88A;
-  --hole:#140C08;
-  --hole-ink:#F3E6CF;
-  --ok:#9BC27A;
-  --warn:#E58A5C;
-  --line:rgba(233,201,143,.22);
+  --ink:#E8EEF7;
+  --muted:#93A3BC;
+  --hole:#04070D;
+  --hole-ink:#E8EEF7;
+  --ok:#8FD19E;
+  --warn:#F0905F;
+  --line:rgba(147,163,188,.22);
   color-scheme:dark;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]){
-    --wood:#EBDDC3;
-    --wood-2:#E2CFAD;
-    --spruce:#6B3F22;
-    --bronze:#8A5A2B;
-    --ink:#2B1B14;
-    --muted:#6E5640;
-    --hole:#2B1B14;
-    --hole-ink:#F3E6CF;
-    --ok:#4E7A2E;
-    --warn:#B4472A;
-    --line:rgba(43,27,20,.18);
-    color-scheme:light;
-  }
 }
 *,*::before,*::after{box-sizing:inherit}
 html,body{margin:0}
@@ -190,6 +174,14 @@ label.field{display:flex;flex-direction:column;gap:6px;font-weight:600;color:var
 .seq{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;direction:ltr}
 .seq .card{direction:rtl}
 
+.lessons{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);max-width:70ch}
+.lessons h3{font:400 1.15rem 'Secular One','Assistant',sans-serif;color:var(--muted);margin:0 0 10px}
+.lessons ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.lessons a{color:var(--spruce);font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}
+.lessons a:hover{text-decoration-thickness:2px}
+.lessons .src{color:var(--muted);font-size:.85rem}
+.lessons .why{color:var(--muted);font-size:.95rem}
+
 footer{margin-top:56px;color:var(--muted);font-size:.9rem}
 footer a{color:var(--spruce)}
 
@@ -252,6 +244,12 @@ footer a{color:var(--spruce)}
           <p id="tStatus" class="hint" style="margin:0"></p>
         </div>
       </div>
+      <aside class="lessons">
+        <h3>שיעורים של Marty Schwartz</h3>
+        <ul>
+        <li><a href="https://daddario.com/the-lesson-room/guitar/electric-guitar/play/beginner/lesson-2-tuning-up-your-guitar" target="_blank" rel="noopener"><bdi>Tuning Up Your Guitar</bdi></a> <span class="src">Marty Schwartz</span><br><span class="why">סרטון קצר ופשוט על כיוון הגיטרה, מהיר ויעיל.</span></li>
+        </ul>
+      </aside>
     </section>
 
     <!-- CHORDS -->
@@ -260,6 +258,13 @@ footer a{color:var(--spruce)}
       <p class="lead">בוחרים תו בסיס ומקבלים את כל הסוגים. לחיצה על אקורד מנגנת אותו.</p>
       <div class="roots" dir="ltr" id="roots"></div>
       <div class="grid" id="chordGrid"></div>
+      <aside class="lessons">
+        <h3>שיעורים של Marty Schwartz</h3>
+        <ul>
+        <li><a href="https://www.daddario.com/blogs/guitar/your-first-guitar-lesson" target="_blank" rel="noopener"><bdi>Your First Guitar Lesson</bdi></a> <span class="src">Marty Schwartz</span><br><span class="why">חלקי הגיטרה, פריטה, ואקורדי Em ו־Asus2 מצורת יד אחת.</span></li>
+        <li><a href="https://www.daddario.com/the-lesson-room/guitar/acoustic-guitar/play/beginner/lesson-18-the-f-major-chord" target="_blank" rel="noopener"><bdi>The F Major Chord</bdi></a> <span class="src">Marty Schwartz</span><br><span class="why">אקורד ה־barre הראשון: F, גם בגרסה בלי barre, ומעבר נקי בין F ל־C.</span></li>
+        </ul>
+      </aside>
     </section>
 
     <!-- METRONOME -->
@@ -290,6 +295,13 @@ footer a{color:var(--spruce)}
           </label>
         </div>
       </div>
+      <aside class="lessons">
+        <h3>שיעורים של Marty Schwartz</h3>
+        <ul>
+        <li><a href="https://www.daddario.com/the-lesson-room/guitar/electric-guitar/play/beginner/lesson-17-beginner-strumming-patterns" target="_blank" rel="noopener"><bdi>Beginner Strumming Patterns</bdi></a> <span class="src">Marty Schwartz</span><br><span class="why">חמשת דפוסי הפריטה הנפוצים למתחילים. מצוין לתרגל עם המטרונום.</span></li>
+        <li><a href="https://www.daddario.com/blogs/guitar/acoustic-guitar-strumming-patterns-pt-2" target="_blank" rel="noopener"><bdi>Strumming Patterns Pt. 2</bdi></a> <span class="src">Marty Schwartz</span><br><span class="why">פריטה מתחלפת, אחיזת מפרט ומעברים חלקים בין אקורדים.</span></li>
+        </ul>
+      </aside>
     </section>
 
     <!-- PROGRESSIONS -->
@@ -315,6 +327,12 @@ footer a{color:var(--spruce)}
         <div class="seq" id="pSeq"></div>
         <p id="pExplain"></p>
       </div>
+      <aside class="lessons">
+        <h3>שיעורים של Marty Schwartz</h3>
+        <ul>
+        <li><a href="https://www.daddario.com/blogs/guitar/playing-the-blues" target="_blank" rel="noopener"><bdi>Playing the Blues</bdi></a> <span class="src">Marty Schwartz</span><br><span class="why">יסודות הבלוז, בהתאמה לסגנון הבלוז במחולל.</span></li>
+        </ul>
+      </aside>
     </section>
   </main>
 
