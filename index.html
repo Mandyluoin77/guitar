@@ -154,7 +154,9 @@ h2{font-family:'Secular One','Assistant',sans-serif;font-weight:400;font-size:1.
 .dg-dot{fill:var(--spruce)}
 .dg-open{fill:none;stroke:var(--ink);stroke-width:1.5}
 .dg-mute{stroke:var(--muted);stroke-width:1.6}
-.dg-txt{fill:var(--muted);font:600 11px 'Assistant',sans-serif}
+.dg-txt{fill:var(--muted);font:600 10px 'Assistant',sans-serif;opacity:.75}
+.dg-start{fill:var(--spruce);opacity:1;font-size:11px}
+.dg-num{fill:var(--ink);font:700 12px 'Assistant',sans-serif}
 
 /* metronome */
 .metro{display:grid;gap:22px;max-width:560px}
@@ -554,7 +556,7 @@ function diagramSVG(fr){
   const start = maxF <= 4 ? 1 : minF;
   const n = Math.max(4, maxF - start + 1);
   const X = i => 22 + i * 16, Y0 = 26, H = 22;
-  const h = Y0 + n * H + 8;
+  const h = Y0 + n * H + 24;
   let s = `<svg class="dg" viewBox="0 0 120 ${h}" aria-hidden="true">`;
   for(let k = 0; k <= n; k++){
     const cls = (k === 0 && start === 1) ? 'dg-nut' : 'dg-fret';
@@ -563,7 +565,15 @@ function diagramSVG(fr){
   for(let i = 0; i < 6; i++){
     s += `<line class="dg-str" x1="${X(i)}" x2="${X(i)}" y1="${Y0}" y2="${Y0 + n * H}" stroke-width="${(1.9 - i * 0.2).toFixed(1)}"/>`;
   }
-  if(start > 1) s += `<text class="dg-txt" x="${X(0) - 8}" y="${Y0 + H * 0.5 + 4}" text-anchor="end">${start}</text>`;
+  /* מספר סריג ליד כל שורה */
+  for(let k = 0; k < n; k++){
+    const cls = (k === 0 && start > 1) ? 'dg-txt dg-start' : 'dg-txt';
+    s += `<text class="${cls}" x="${X(0) - 9}" y="${Y0 + (k + 0.5) * H + 4}" text-anchor="end">${start + k}</text>`;
+  }
+  /* הסריג של כל מיתר, מתחת לדיאגרמה */
+  fr.forEach((f, i) => {
+    s += `<text class="dg-num" x="${X(i)}" y="${Y0 + n * H + 17}" text-anchor="middle">${f < 0 ? 'x' : f}</text>`;
+  });
 
   let barre = null;
   if(minF > 0){
